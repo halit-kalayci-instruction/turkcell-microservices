@@ -6,5 +6,5 @@ import com.turkcell.productservice.entities.Product;
 
 public interface ProductService {
     CreatedProductResponse add(CreateProductRequest request);
-    Product getByInventoryCode(String code);
+    Boolean getByInventoryCode(String code, int requiredStock);
 }

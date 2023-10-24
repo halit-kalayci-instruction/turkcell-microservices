@@ -37,14 +37,16 @@ public class ProductManager implements ProductService{
     }
 
     @Override
-    public Product getByInventoryCode(String code) {
+    public Boolean getByInventoryCode(String code, int requiredStock) {
         // Direkt query çalıştırmak
-        // 8:05
-        List<Product> allProducts = productRepository.findAll();
+        /* List<Product> allProducts = productRepository.findAll();
         Optional<Product> product = allProducts
                 .stream()
                 .filter((p) -> p.getInventoryCode().equals(code))
-                .findFirst();
-        return product.orElseThrow();
+                .findFirst(); */
+        Product product = productRepository.findByInventoryCodeQuery(code);
+        if(product==null || product.getStock() < requiredStock)
+            return false;
+        return true;
     }
 }

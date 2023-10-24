@@ -20,8 +20,9 @@ public class ProductsController {
         return productService.add(request);
     }
 
-    @GetMapping("{invCode}")
-    public Product getByInventoryCode(@PathVariable String invCode){
-        return productService.getByInventoryCode(invCode);
+    @GetMapping("check-stock")
+    public Boolean getByInventoryCode(@RequestParam String invCode,
+                                      @RequestParam int requiredStock){
+        return productService.getByInventoryCode(invCode, requiredStock);
     }
 }
