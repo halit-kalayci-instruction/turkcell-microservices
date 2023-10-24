@@ -20,7 +20,7 @@ public class OrdersController {
     @PostMapping
     public ResponseEntity<Boolean> submitOrder(@RequestBody CreateOrderRequest request)
     {
-        // Web istekleri async
+        // Web istekleri default async
         // sync
         Boolean hasStock = webClientBuilder.build()
                 .get()
@@ -32,7 +32,7 @@ public class OrdersController {
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();
-
+        // senkron
         return new ResponseEntity<>(hasStock, hasStock ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 }
