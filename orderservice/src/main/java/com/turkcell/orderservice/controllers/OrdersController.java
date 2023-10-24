@@ -2,6 +2,8 @@ package com.turkcell.orderservice.controllers;
 
 import com.turkcell.orderservice.dtos.requests.CreateOrderRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +18,7 @@ public class OrdersController {
     private final WebClient.Builder webClientBuilder;
 
     @PostMapping
-    public Boolean submitOrder(@RequestBody CreateOrderRequest request)
+    public ResponseEntity<Boolean> submitOrder(@RequestBody CreateOrderRequest request)
     {
         // Web istekleri async
         // sync
@@ -31,6 +33,6 @@ public class OrdersController {
                 .bodyToMono(Boolean.class)
                 .block();
 
-        return hasStock;
+        return new ResponseEntity<>(hasStock, hasStock ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 }
