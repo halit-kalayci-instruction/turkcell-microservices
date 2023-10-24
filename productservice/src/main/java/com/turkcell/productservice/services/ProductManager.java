@@ -7,6 +7,9 @@ import com.turkcell.productservice.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ProductManager implements ProductService{
@@ -20,6 +23,7 @@ public class ProductManager implements ProductService{
                 .price(request.getPrice())
                 .description(request.getDescription())
                 .stock(request.getStock())
+                .inventoryCode(request.getInventoryCode())
                 .build();
 
         product = productRepository.save(product);
@@ -30,5 +34,17 @@ public class ProductManager implements ProductService{
                 .name(product.getName())
                 .build();
         return response;
+    }
+
+    @Override
+    public Product getByInventoryCode(String code) {
+        // Direkt query çalıştırmak
+        // 8:05
+        List<Product> allProducts = productRepository.findAll();
+        Optional<Product> product = allProducts
+                .stream()
+                .filter((p) -> p.getInventoryCode().equals(code))
+                .findFirst();
+        return product.orElseThrow();
     }
 }

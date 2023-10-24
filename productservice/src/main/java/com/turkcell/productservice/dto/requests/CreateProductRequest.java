@@ -16,4 +16,5 @@ public class CreateProductRequest {
     private String description;
     private BigDecimal price;
     private int stock;
+    private String inventoryCode;
 }

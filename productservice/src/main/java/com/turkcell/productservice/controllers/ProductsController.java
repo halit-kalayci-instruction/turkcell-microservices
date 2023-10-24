@@ -2,6 +2,7 @@ package com.turkcell.productservice.controllers;
 
 import com.turkcell.productservice.dto.requests.CreateProductRequest;
 import com.turkcell.productservice.dto.responses.CreatedProductResponse;
+import com.turkcell.productservice.entities.Product;
 import com.turkcell.productservice.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,5 +18,10 @@ public class ProductsController {
     @ResponseStatus(HttpStatus.CREATED)
     public CreatedProductResponse add(@RequestBody CreateProductRequest request){
         return productService.add(request);
+    }
+
+    @GetMapping("{invCode}")
+    public Product getByInventoryCode(@PathVariable String invCode){
+        return productService.getByInventoryCode(invCode);
     }
 }
