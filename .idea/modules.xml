@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/discovery-server/discovery-server.iml" filepath="$PROJECT_DIR$/discovery-server/discovery-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/orderservice/orderservice.iml" filepath="$PROJECT_DIR$/orderservice/orderservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/productservice/productservice.iml" filepath="$PROJECT_DIR$/productservice/productservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../starter/starter/starter.iml" filepath="$PROJECT_DIR$/../starter/starter/starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/turkcell.microservices.iml" filepath="$PROJECT_DIR$/.idea/turkcell.microservices.iml" />
     </modules>
   </component>

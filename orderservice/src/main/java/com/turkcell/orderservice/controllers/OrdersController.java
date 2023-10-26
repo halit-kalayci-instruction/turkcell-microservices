@@ -36,3 +36,4 @@ public class OrdersController {
         return new ResponseEntity<>(hasStock, hasStock ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 }
+// Service Discovery
