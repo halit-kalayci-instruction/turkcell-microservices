@@ -24,7 +24,7 @@ public class OrdersController {
         // sync
         Boolean hasStock = webClientBuilder.build()
                 .get()
-                .uri("http://localhost:8083/api/v1/products/check-stock",
+                .uri("http://product-service/api/v1/products/check-stock",
                         (uriBuilder) -> uriBuilder
                                 .queryParam("invCode",request.getInventoryCode())
                                 .queryParam("requiredStock",request.getAmount())
