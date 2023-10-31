@@ -25,4 +25,9 @@ public class ProductsController {
                                       @RequestParam int requiredStock){
         return productService.getByInventoryCode(invCode, requiredStock);
     }
+
+    @GetMapping("deneme")
+    public String deneme(){
+        return "Deneme";
+    }
 }
