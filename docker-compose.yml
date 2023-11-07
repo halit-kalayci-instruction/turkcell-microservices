@@ -1,0 +1,19 @@
+services:
+  discovery-service:
+   image: halitkalayci/discoveryserver
+   ports:
+     - 8761:8761
+   mem_limit: 700m
+   depends_on:
+     - keycloak
+  keycloak:
+    image: quay.io/keycloak/keycloak
+    ports:
+      - 8080:8080
+    mem_limit: 700m
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command:
+      - start-dev
+
