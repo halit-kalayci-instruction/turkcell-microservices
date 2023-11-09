@@ -10,6 +10,7 @@
         <module name="api-gateway" />
         <module name="discovery-server" />
         <module name="starter" />
+        <module name="notificationservice" />
         <module name="orderservice" />
         <module name="productservice" />
       </profile>
@@ -17,6 +18,7 @@
     <bytecodeTargetLevel>
       <module name="api-gateway" target="17" />
       <module name="discovery-server" target="17" />
+      <module name="notificationservice" target="17" />
       <module name="orderservice" target="17" />
       <module name="productservice" target="17" />
       <module name="starter" target="17" />
@@ -26,6 +28,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
+      <module name="notificationservice" options="-parameters" />
       <module name="orderservice" options="-parameters" />
       <module name="productservice" options="-parameters" />
       <module name="starter" options="-parameters" />
