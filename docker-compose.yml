@@ -1,11 +1,11 @@
 services:
   discovery-service:
-   image: halitkalayci/discoveryserver
-   ports:
-     - 8761:8761
-   mem_limit: 700m
-   depends_on:
-     - keycloak
+    image: halitkalayci/discoveryserver
+    ports:
+      - 8761:8761
+    mem_limit: 700m
+    depends_on:
+      - keycloak
   keycloak:
     image: quay.io/keycloak/keycloak
     ports:
@@ -16,4 +16,24 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     command:
       - start-dev
-
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    ports:
+      - 2181:2181
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+  kafka:
+    image: confluentinc/cp-kafka
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://broker:29092
